@@ -1,0 +1,64 @@
+import React from 'react';
+
+const cities = [
+  "Mumbai", "Delhi", "Bengaluru", "Kolkata", "Chennai", "Hyderabad",
+  "Ahmedabad", "Pune", "Jaipur", "Surat", "Vadodara", "Indore",
+  "Coimbatore", "Chandigarh", "Nagpur", "Agra", "Patna", "Bhopal",
+  "Visakhapatnam", "Gurugram", "Faridabad", "Kochi", "Mangalore",
+  "Jodhpur", "Ranchi", "Amritsar", "Varanasi", "Bhubaneswar",
+  "Mysuru", "Tiruchirappalli", "Madurai", "Tirupati", "Dehradun",
+  "Shimla", "Guwahati", "Kanpur", "Nashik", "Udaipur", "Jabalpur",
+  "Aurangabad", "Jamshedpur", "Solapur", "Durgapur", "Bhilai",
+  "Siliguri", "Kakinada", "Raipur", "Aligarh", "Muzaffarpur",
+  "Haldwani", "Rourkela", "Sambalpur", "Ludhiana", "Fatehgarh Sahib",
+  "Moradabad", "Shivamogga", "Patiala", "Jhansi", "Jammu",
+  "Srinagar", "Pondicherry", "Daman", "Diu", "Dadra and Nagar Haveli",
+  "Lakshadweep", "Andaman and Nicobar Islands"
+];
+
+// Generate random colors for the dots
+const getRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
+const Footer = () => {
+  return (
+    <footer className="bg-gray-800 text-white py-6">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col lg:flex-row justify-between">
+          {/* Cities Section */}
+          <div className="w-full ">
+            <h2 className="text-2xl font-bold mb-4">Cities in India</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+              {cities.map((city, index) => (
+                <div key={index} className="flex items-center space-x-2 cursor-pointer" onClick={()=>alert(city)}>
+                  <span 
+                    style={{ 
+                      backgroundColor: getRandomColor(),
+                      borderRadius: '50%',
+                      width: '10px',
+                      height: '10px',
+                      display: 'inline-block'
+                    }}
+                  />
+                  <span>{city}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        {/* Copyright Section */}
+        <div className="text-center mt-6">
+          <p className="text-gray-400 text-sm">&copy; {new Date().getFullYear()} Your Company Name. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
