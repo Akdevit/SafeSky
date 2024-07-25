@@ -6,7 +6,7 @@ import UserProtectionPollustion from '../components/dashboard/Pollustion/UserPro
 const Pollustion = () => {
     const [datauserprotectaqi, setDatauserprotectaqi] = useState(['']);
 
-    const AQI = 10;
+    const AQI = 400;
 
 
     useEffect(() => {

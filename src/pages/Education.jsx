@@ -1,12 +1,12 @@
 import React from 'react'
-import Nav from '../components/layout/Nav'
+import Header from '../components/dashboard/education/Header'
 import Contents from '../components/dashboard/education/Contents'
 const Education = () => {
 
 
     return (
         <>
-            <Nav />
+            <Header />
             <Contents />
         </>
     )

@@ -2,18 +2,22 @@ import React, { useEffect, useState } from 'react'
 
 const Contents = () => {
     const [videodata, setVideodata] = useState([])
+    const [lodding, setLodding] = useState(true)
 
 
     useEffect(() => {
-
-        fetch(`https://yt-search-itx2.onrender.com/search?q=Real-time Weather Updates videos india`)
+        setLodding(true)
+        fetch(`https://yt-search-xpf0.onrender.com/search?q=Real-time Pollution Alerts updates india in hindi&limit=30`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
                 setVideodata(data?.searchResults)
+                setLodding(false)
             })
 
     }, [])
+
+   
 
 
 
@@ -24,14 +28,17 @@ const Contents = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 '>
                 {
-                    videodata?.map((data, index) => (
-                        <>
-                            <div key={index} className='w-full h-[250px] cursor-pointer rounded-md overflow-hidden bg-white shadow-sm'>
-                                <img className=' w-full h-[200px]' src={data?.thumbnail} alt='videos' />
-                                <p className='text-[14px] p-2'>{data?.title}</p>
-                            </div>
-                        </>
-                    ))
+
+                    lodding ? <><h1>Lodding....</h1></> :
+
+                        videodata?.map((data, index) => (
+                            <>
+                                <div key={index} className='w-full h-[250px] cursor-pointer rounded-md overflow-hidden bg-white shadow-sm'>
+                                    <img className=' w-full h-[200px]' src={data?.thumbnail} alt={data?.title} />
+                                    <p className='text-[14px] p-2'>{data?.title}</p>
+                                </div>
+                            </>
+                        ))
                 }
 
 
@@ -62,52 +69,24 @@ export default Contents
 9. Climate Change Impact
 10. Air Pollution Health Effects
 
-### Specific Weather Safety Keywords
-1. Thunderstorm Safety
-2. Flood Safety Tips
-3. Hurricane Preparedness
-4. Tornado Survival Tips
-5. Heat Wave Safety
-6. Winter Storm Safety
-7. Lightning Strike Safety
-8. Snowstorm Preparedness
-9. Monsoon Safety Tips
-10. Weather Forecasting Techniques
-
-### Pollution Awareness Keywords
-1. Air Quality Monitoring
-2. Reducing Air Pollution
-3. Health Effects of Pollution
-4. Smog Alerts
-5. Pollution Control Measures
-6. Urban Air Quality
-7. AQI Explained
-8. Breathing Safe Air
-9. Reducing Carbon Footprint
-10. Green Living Tips
-
-### Environmental Education Keywords
-1. Climate Change Education
-2. Sustainable Living
-3. Environmental Conservation
-4. Eco-friendly Practices
-5. Renewable Energy
-6. Wildlife Protection
-7. Water Conservation
-8. Recycling and Waste Management
-9. Environmental Awareness Campaigns
-10. Nature Preservation
-
-### Targeted Keywords for User Engagement
-1. How to Stay Safe During a Heat Wave
-2. Top Tips for Air Pollution Safety
-3. Real-time Weather Tracking Apps
-4. Understanding the Air Quality Index
-5. Best Practices for Weather Preparedness
-6. Pollution's Impact on Health
-7. Staying Safe in Extreme Weather
-8. Air Quality Tips for Asthmatics
-9. Protecting Yourself from Pollution
-10. Emergency Kits for Weather Disasters
-
+"How to protect yourself from air pollution"
+"Safety tips during severe weather"
+"Best practices for indoor air quality"
+"Protecting your health from climate change effects"
+"How to prepare for natural disasters"
+"Eco-friendly products for a sustainable home"
+"How to reduce exposure to outdoor pollutants"
+"Climate change and personal safety measures"
+"Preparing for heatwaves and extreme temperatures"
+"Protecting children from pollution"
+"Healthy living tips in polluted areas"
+"Emergency preparedness for hurricanes and storms"
+"How to stay safe during a wildfire"
+"Adapting to climate change in your community"
+"Steps to improve indoor air quality"
+"Personal protective equipment for pollution"
+"How to stay safe during floods"
+"Green home improvements for better air quality"
+"Reducing waste to combat pollution"
+"Protecting vulnerable populations from climate change"
 Using these keywords in your YouTube video titles, descriptions, and tags can help increase visibility and reach a wider audience interested in weather and pollution safety. */
