@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { CiSearch } from "react-icons/ci";
 import { IoMdSettings } from "react-icons/io";
 import { VscBell } from "react-icons/vsc";
 import { CiUser } from "react-icons/ci";
-
+import { useDispatch } from 'react-redux';
+import { setInputValue } from '../../redux/Searchvalue';
 const Nav = () => {
+    const dispatch = useDispatch();
+    const [input, setInput] = useState('')
+
+    const handleChange = (e) => {
+        setInput(e.target.value)
+
+    }
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            dispatch(setInputValue(input))
+        }
+    }
     return (
         <>
             <div className='w-full h-20 bg-[#FFFFFF] border border-[#E3E4E8] border-hide flex items-center justify-between pr-4 pl-4'>
@@ -19,7 +32,9 @@ const Nav = () => {
                     {/* input */}
                     <div className='w-auto pl-3 pr-3 p-2 bg-[#F4F4F6] h-auto flex items-center justify-center gap-1 rounded-full'>
                         <CiSearch className='text-2xl text-gray-400' />
-                        <input className='bg-transparent outline-0 text-gray-400' type='text' placeholder='Search for samething..' />
+                        <input onChange={handleChange}
+                            onKeyDown={handleKeyDown}
+                            className='bg-transparent outline-0 text-gray-400' type='text' placeholder='Search for samething..' />
                     </div>
 
                     {/* setting */}

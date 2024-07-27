@@ -2,12 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { FaSnowflake, FaInfoCircle, FaExclamationTriangle, FaHeart, FaFirstAid } from 'react-icons/fa';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import ProtectJsonData from "../../../json/TempData.json"
+import { useSelector } from 'react-redux';
 const Userprotect = () => {
     // console.log('ProtectJsonData', ProtectJsonData)
     const [datauserprotect, setDatauserprotect] = useState([''])
     const [daynighttimeprotection, setDaynighttimeprotection] = useState(true)
+    const kelvinToCelsius = (kelvin) => kelvin - 273.15;
 
-    const temp = 25;
+    const weatherData = useSelector((state) => state.weather.data);
+    // const weatherStatus = useSelector((state) => state.weather.status);
+    // const weatherError = useSelector((state) => state.weather.error);
+
+    const temp = kelvinToCelsius(weatherData?.main?.temp).toFixed(0);
 
     useEffect(() => {
         const range = ProtectJsonData?.temperature_ranges?.find(teprenge =>
@@ -20,7 +26,7 @@ const Userprotect = () => {
         } else {
             console.log('No range found for temperature:', temp);
         }
-    }, []);
+    }, [temp]);
 
 
     const dayprotection = () => {

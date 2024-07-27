@@ -14,7 +14,7 @@ const Contents = ({ topics, lang }) => {
         return match ? match[1] : null;
     }
     const videoId = extractYouTubeID(playvideo);
-    console.log(videoId);
+    // console.log(videoId);
     const playvideoid = videoId ? `https://www.youtube.com/embed/${videoId}` : '';
 
 
@@ -26,7 +26,7 @@ const Contents = ({ topics, lang }) => {
         fetch(`https://yt-search-xpf0.onrender.com/search?q=${topics}%20news%20 videos in ${lang}&limit=20`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 setVideodata(data?.searchResults)
                 setLodding(false)
             })
