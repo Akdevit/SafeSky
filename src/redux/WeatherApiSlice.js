@@ -1,13 +1,14 @@
-// src/features/example/exampleSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // Async thunk for making an API call
 export const fetchweatherData = createAsyncThunk(
   "weather/fetchweatherData",
-  async (q) => {
+  async ({ q, lat, lon }) => {
     const response = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${q}&appid=2414caecc6c57d285a1f1b4e88cd0a78&lang=en`
+      `https://api.openweathermap.org/data/2.5/weather?${
+        q ? `q=${q}` : `lat=${lat}&lon=${lon}`
+      }&appid=2414caecc6c57d285a1f1b4e88cd0a78&lang=en`
     );
     return response.data;
   }
@@ -16,7 +17,7 @@ export const fetchweatherData = createAsyncThunk(
 const weatherSlice = createSlice({
   name: "weather",
   initialState: {
-    data: [],
+    data: null,
     status: "idle",
     error: null,
   },

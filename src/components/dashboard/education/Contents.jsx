@@ -17,10 +17,6 @@ const Contents = ({ topics, lang }) => {
     // console.log(videoId);
     const playvideoid = videoId ? `https://www.youtube.com/embed/${videoId}` : '';
 
-
-
-
-
     useEffect(() => {
         setLodding(true)
         fetch(`https://yt-search-xpf0.onrender.com/search?q=${topics}%20news%20 videos in ${lang}&limit=20`)

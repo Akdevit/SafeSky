@@ -28,7 +28,6 @@ const Userprotect = () => {
         }
     }, [temp]);
 
-
     const dayprotection = () => {
         setDaynighttimeprotection(true)
         //if sunrise outo day

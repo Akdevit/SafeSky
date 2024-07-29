@@ -6,14 +6,16 @@ import { VscBell } from "react-icons/vsc";
 import { CiUser } from "react-icons/ci";
 import { useDispatch, useSelector } from 'react-redux';
 import { setInputValue } from '../../redux/Searchvalue';
+import Notifications from '../setting/Notifications';
 const Nav = () => {
+    const [openpermistionmodal, setOpenpermistionmodal] = useState(false);
     const dispatch = useDispatch();
     const weatherStatus = useSelector((state) => state.weather.status);
-    const weatherError = useSelector((state) => state.weather.error);
+    // const weatherError = useSelector((state) => state.weather.error);
     const [input, setInput] = useState('')
 
 
-    console.log(weatherStatus, weatherError)
+    // console.log(weatherStatus, weatherError)
 
     useEffect(() => {
         if (weatherStatus === 'loading') {
@@ -33,6 +35,11 @@ const Nav = () => {
             dispatch(setInputValue(input))
 
         }
+    }
+
+    const Permissionsnotifications = () => {
+        setOpenpermistionmodal(true)
+        // alert('Permissions')
     }
     return (
         <>
@@ -54,7 +61,7 @@ const Nav = () => {
                     </div>
 
                     {/* setting */}
-                    <div className='w-[40px] h-[40px] bg-[#F4F4F6] flex justify-center items-center rounded-full cursor-pointer' title='Setting'>
+                    <div onClick={Permissionsnotifications} className='w-[40px] h-[40px] bg-[#F4F4F6] flex justify-center items-center rounded-full cursor-pointer' title='Setting'>
                         <IoMdSettings className='text-[#888EA2] text-xl' />
                     </div>
                     {/* notification */}
@@ -67,7 +74,9 @@ const Nav = () => {
                         <CiUser className='text-[#888EA2] text-xl ' />
                     </div>
                 </div>
-
+                {
+                    openpermistionmodal ? <Notifications setOpenpermistionmodal={setOpenpermistionmodal}/> : null
+                }
             </div>
         </>
     )
