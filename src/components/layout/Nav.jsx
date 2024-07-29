@@ -1,13 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CiSearch } from "react-icons/ci";
+import toast from 'react-hot-toast';
 import { IoMdSettings } from "react-icons/io";
 import { VscBell } from "react-icons/vsc";
 import { CiUser } from "react-icons/ci";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setInputValue } from '../../redux/Searchvalue';
 const Nav = () => {
     const dispatch = useDispatch();
+    const weatherStatus = useSelector((state) => state.weather.status);
+    const weatherError = useSelector((state) => state.weather.error);
     const [input, setInput] = useState('')
+
+
+    console.log(weatherStatus, weatherError)
+
+    useEffect(() => {
+        if (weatherStatus === 'loading') {
+            toast.success('Loading...')
+        }
+        else if (weatherStatus === 'failed') {
+            toast.error('Not found !')
+        }
+    }, [weatherStatus])
 
     const handleChange = (e) => {
         setInput(e.target.value)
@@ -16,6 +31,7 @@ const Nav = () => {
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             dispatch(setInputValue(input))
+
         }
     }
     return (

@@ -15,11 +15,6 @@ const WeatherData = () => {
     // const weatherStatus = useSelector((state) => state.weather.status);
     // const weatherError = useSelector((state) => state.weather.error);
     const kelvinToCelsius = (kelvin) => kelvin - 273.15;
-    // console.log(weatherData, weatherStatus, weatherError)
-
-
-
-
 
 
     /* sunrise sunset */
@@ -49,7 +44,7 @@ const WeatherData = () => {
             {/* Weather Cards */}
             <div className='w-full h-auto  flex justify-between p-4 gap-4'>
                 {/* card 1 */}
-                <div className='w-full md:w-[40%] h-[200px] rounded-md bg-red-200 shadow-sm flex'>
+                <div className='w-full md:w-[40%] h-[200px] rounded-md bg-red-100 shadow-sm flex'>
                     <div className='w-[150px] h-full flex flex-col justify-center items-center p-4 '>
                         <img src={`http://openweathermap.org/img/wn/${weatherData?.weather && weatherData?.weather[0]?.icon}@2x.png`} alt='weather' className='w-[100px] h-[100px]' />
                         <p className='text-xl font-bold '>{weatherData?.weather && weatherData?.weather[0]?.main}</p>
@@ -63,7 +58,7 @@ const WeatherData = () => {
                 </div>
 
                 {/* card 2 */}
-                <div className='w-[40%] h-[200px] rounded-md bg-blue-200 shadow-sm p-2'>
+                <div className='w-[40%] h-[200px] rounded-md bg-blue-100 shadow-sm p-2'>
                     <h2 className='text-5xl  text-center'>{weatherData?.name}</h2>
                     <div className=" flex items-center gap-4 mt-2 px-4">
                         <FaTemperatureHigh />
@@ -88,7 +83,7 @@ const WeatherData = () => {
 
                 </div>
                 {/* card3 */}
-                <div className='w-[40%] h-[200px] rounded-md bg-green-200 p-2 shadow-sm flex flex-wrap '>
+                <div className='w-[40%] h-[200px] rounded-md bg-green-100 p-2 shadow-sm flex flex-wrap '>
                     <div className="w-[50%] h-auto cursor-pointer flex items-center gap-4 px-4" title='Visibility'>
                         <FaEye className="text-xl" />
                         <span >Visibility {weatherData?.visibility} m</span>
@@ -118,7 +113,7 @@ const WeatherData = () => {
                         <span >Sunset {sunsetTime}</span>
                     </div>
 
-                    {/* Add weather data here */}
+                    {/* Add weather data here ... */}
                 </div>
             </div>
 
