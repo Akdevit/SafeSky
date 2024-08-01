@@ -13,8 +13,8 @@ const Hero = () => {
             >
                 <div className='w-[100%] h-[100%] flex justify-center items-center' >
 
-                    <div className='w-[60%] h-auto  flex flex-col gap-4 justify-center items-center' >
-                        <h1 className='text-6xl font-bold text-center'>“Stay Informed, Stay Safe”</h1>
+                    <div className='xl:w-[60%] lg:w-[60%] md:-[60%] w-full h-auto  flex flex-col gap-4 justify-center items-center' >
+                        <h1 className='xl:text-6xl text-3xl font-bold text-center'>“Stay Informed , Stay <mark className='bg-green-400'>Safe</mark>”</h1>
                         <p className='text-2xl text-center'>Access accurate data to protect your health and make informed decisions. Stay informed, stay healthy, and ensure your well-being.</p>
 
                         <div className='w-full h-auto flex gap-4 items-center justify-center'>

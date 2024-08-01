@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 
 const Aqi = ({ datauserprotectaqi }) => {
     const pollustiondata = useSelector((state) => state.pollustion.data);
+    const weatherData = useSelector((state) => state.weather.data);
+    const WeatherCityname = weatherData?.name;
     // console.log(pollustiondata?.list && pollustiondata?.list[0]?.components)
 
 
@@ -29,6 +31,7 @@ const Aqi = ({ datauserprotectaqi }) => {
                     <div className="text-gray-600 mt-1">
                         {datauserprotectaqi?.category}
                     </div>
+                    <p>{WeatherCityname}</p>
                 </div>
             </div>
 

@@ -45,7 +45,7 @@ const Map_Forcast = () => {
     return (
         <div className='w-full h-auto flex flex-col lg:flex-row gap-6 p-6'>
             {/* Map Section */}
-            <div className='w-full lg:w-1/3 h-[350px] rounded-md overflow-hidden shadow-sm relative -z-10'>
+            <div className='w-full lg:w-1/3 h-[350px] rounded-md overflow-hidden shadow-sm  '>
                 {position ? (
                     <MapContainer center={position} zoom={6} style={{ height: '350px', width: '100%' }}>
                         <TileLayer

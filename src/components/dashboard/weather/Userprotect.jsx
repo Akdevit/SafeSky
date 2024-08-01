@@ -21,21 +21,52 @@ const Userprotect = () => {
         );
 
         if (range) {
-            // console.log('Temperature Range:', range);
             setDatauserprotect(range)
         } else {
             console.log('No range found for temperature:', temp);
         }
     }, [temp]);
 
+    /*  */
+    function convertUnixToTime(unixTimestamp) {
+        const date = new Date(unixTimestamp * 1000);
+        let hours = date.getHours();
+        const minutes = date.getMinutes();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        const strMinutes = minutes < 10 ? '0' + minutes : minutes;
+        const time = hours + ':' + strMinutes + ' ' + ampm;
+        return time;
+    }
+
+    const sunrise = weatherData?.sys?.sunrise;
+    const sunset = weatherData?.sys?.sunset;
+
+    convertUnixToTime(sunrise);
+    convertUnixToTime(sunset);
+
+    // Get the current Unix timestamp
+    const currentTime = Math.floor(Date.now() / 1000);
+
+    // Determine if it's day or night
+    const isDaytime = currentTime >= sunrise && currentTime < sunset;
+
+    /* auto userprotection day and night  */
+    useEffect(() => {
+        if (isDaytime) {
+            setDaynighttimeprotection(true)
+        } else {
+            setDaynighttimeprotection(false)
+        }
+    }, [isDaytime])
+
     const dayprotection = () => {
         setDaynighttimeprotection(true)
-        //if sunrise outo day
     }
 
     const nightprotection = () => {
         setDaynighttimeprotection(false)
-        // if sunset outo night
     }
 
 
