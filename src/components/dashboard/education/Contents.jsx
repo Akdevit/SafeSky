@@ -50,8 +50,7 @@ const Contents = ({ topics, lang }) => {
                     playvideo && (
                         <>
                             <iframe
-                                width="80%"
-                                height="515"
+                                className='xl:w-[80%] xl:h-[550px] w-full h-[300px]'
                                 src={playvideoid}
                                 frameBorder="0"
                                 allow="autoplay; encrypted-media"
@@ -64,7 +63,6 @@ const Contents = ({ topics, lang }) => {
                 }
 
             </div>
-
             {
 
                 lodding ? (<Lodder />) : (
@@ -91,39 +89,3 @@ const Contents = ({ topics, lang }) => {
 
 export default Contents
 
-
-/* For optimizing YouTube videos about weather and pollution safety, here are some keyword ideas to consider:
-
-### General Weather and Pollution Safety Keywords
-1. Weather Alerts
-2. Pollution Alerts
-3. Real-time Weather Updates
-4. what is Air Quality Index (AQI)
-5. Pollution Safety Tips
-6. Weather Safety Tips
-7. Severe Weather Preparedness
-8. Emergency Weather Plans
-9. Climate Change Impact
-10. Air Pollution Health Effects
-
-"How to protect yourself from air pollution"
-"Safety tips during severe weather"
-"Best practices for indoor air quality"
-"Protecting your health from climate change effects"
-"How to prepare for natural disasters"
-"Eco-friendly products for a sustainable home"
-"How to reduce exposure to outdoor pollutants"
-"Climate change and personal safety measures"
-"Preparing for heatwaves and extreme temperatures"
-"Protecting children from pollution"
-"Healthy living tips in polluted areas"
-"Emergency preparedness for hurricanes and storms"
-"How to stay safe during a wildfire"
-"Adapting to climate change in your community"
-"Steps to improve indoor air quality"
-"Personal protective equipment for pollution"
-"How to stay safe during floods"
-"Green home improvements for better air quality"
-"Reducing waste to combat pollution"
-"Protecting vulnerable populations from climate change"
-Using these keywords in your YouTube video titles, descriptions, and tags can help increase visibility and reach a wider audience interested in weather and pollution safety. */

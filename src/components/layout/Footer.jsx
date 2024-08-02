@@ -14,8 +14,8 @@ const cities = [
   "Siliguri", "Kakinada", "Raipur", "Aligarh", "Muzaffarpur",
   "Haldwani", "Rourkela", "Sambalpur", "Ludhiana", "Fatehgarh Sahib",
   "Moradabad", "Shivamogga", "Patiala", "Jhansi", "Jammu",
-  "Srinagar", "Pondicherry", "Daman", "Diu", "Dadra and Nagar Haveli",
-  "Lakshadweep", "Andaman and Nicobar Islands"
+  "Srinagar", "Pondicherry", "Daman", "Diu",
+  "Lakshadweep",
 ];
 
 // Generate random colors for the dots
@@ -55,7 +55,7 @@ const Footer = () => {
                       borderRadius: '50%',
                       width: '10px',
                       height: '10px',
-                      display: 'inline-block'
+                      // display: 'inline-block'
                     }}
                   />
                   <span>{city}</span>

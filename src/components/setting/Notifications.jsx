@@ -93,8 +93,8 @@ const Notifications = ({ setOpenpermistionmodal }) => {
         toast.success('location cleared successfully please refresh browser')
     }
     return (
-        <div className='w-full h-[100vh] flex justify-center items-center absolute z-[99999] right-0 left-0 top-0'>
-            <div className='w-[60%] h-[60vh] bg-white rounded-md p-6 shadow-lg'>
+        <div className='w-full h-[100vh] flex justify-center items-center absolute z-[99999999] right-0 left-0 top-0'>
+            <div className='xl:w-[50%] lg:w-[60%] md:w-[60%] sm:w-[60%] w-[95%] h-auto bg-white rounded-md p-6 shadow-lg'>
                 <div className='w-full flex justify-between items-center mb-6'>
                     <h1 className='text-2xl font-semibold'>Access Permissions</h1>
                     <RxCross1 className='text-xl font-bold cursor-pointer' onClick={() => setOpenpermistionmodal(false)} />

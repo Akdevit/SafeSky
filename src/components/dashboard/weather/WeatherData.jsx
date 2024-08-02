@@ -42,7 +42,8 @@ const WeatherData = () => {
     return (
         <>
             {/* Weather Cards */}
-            <div className='w-full h-auto  flex justify-between p-4 gap-4'>
+            <div className='w-full h-auto flex  flex-col xl:flex-row lg:flex-row md:flex-row sm:flex-col justify-between p-4 gap-4'>
+            
                 {/* card 1 */}
                 <div className='w-full md:w-[40%] h-[200px] rounded-md bg-red-100 shadow-sm flex'>
                     <div className='w-[150px] h-full flex flex-col justify-center items-center p-4 '>
@@ -58,7 +59,7 @@ const WeatherData = () => {
                 </div>
 
                 {/* card 2 */}
-                <div className='w-[40%] h-[200px] rounded-md bg-blue-100 shadow-sm p-2'>
+                <div className='xl:w-[40%] lg:w-[40%] md:w-[40%] sm:w-full w-full h-[200px] rounded-md bg-blue-100 shadow-sm p-2'>
                     <h2 className='text-5xl  text-center'>{weatherData?.name}</h2>
                     <div className=" flex items-center gap-4 mt-2 px-4">
                         <FaTemperatureHigh />
@@ -83,7 +84,7 @@ const WeatherData = () => {
 
                 </div>
                 {/* card3 */}
-                <div className='w-[40%] h-[200px] rounded-md bg-green-100 p-2 shadow-sm flex flex-wrap '>
+                <div className='xl:w-[40%] lg:w-[40%] md:w-[40%] sm:w-full w-full h-[200px] rounded-md bg-green-100 p-2 shadow-sm flex flex-wrap '>
                     <div className="w-[50%] h-auto cursor-pointer flex items-center gap-4 px-4" title='Visibility'>
                         <FaEye className="text-xl" />
                         <span >Visibility {weatherData?.visibility} m</span>

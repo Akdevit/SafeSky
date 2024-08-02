@@ -4,7 +4,7 @@ import { FaLungs, FaHeart, FaBrain, FaThermometerFull, FaSnowflake, FaWater, FaD
 const ImpactSection = () => {
     return (
         <section className="bg-gray-100 dark:bg-gray-800 ">
-            <div className=" container px-14 py-12 mx-auto ">
+            <div className=" container xl:px-14 lg:px-14 md:px-14 sm:px-14 xl:py-12 lg:py-12 md:py-12 sm:py-12 py-4 px-4 mx-auto ">
                 <div className="text-start">
                     <h2 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
                         Impact of Pollution and Weather on Human Life

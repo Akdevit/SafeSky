@@ -18,7 +18,7 @@ const Aqi = ({ datauserprotectaqi }) => {
             {/* AQI */}
             <div className='w-full h-auto flex justify-center items-center p-4'>
                 <div
-                    className='w-[30%] rounded-md shadow-sm p-6 text-center'
+                    className='xl:w-[30%] lg:w-[30%] md:w-[50%] sm:w-[50%] w-full rounded-md shadow-sm p-6 text-center'
                     style={{ backgroundColor: datauserprotectaqi?.bg_color }}
                 >
                     <p

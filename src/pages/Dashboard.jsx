@@ -8,6 +8,7 @@ const Dashboard = () => {
             <Sidebaar />
             <div className='w-[100%] h-[100vh]  overflow-auto'>
                 <Outlet />
+
             </div>
         </div>
     );

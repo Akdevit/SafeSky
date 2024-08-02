@@ -37,10 +37,10 @@ const Header = ({ setTopics, setLang }) => {
 
     return (
         <>
-            <div className='w-full h-[80px] bg-white border-b-2 flex items-center gap-4'>
+            <div className='w-full h-[80px] bg-white border-b-2 flex justify-between px-4 items-center gap-4'>
 
 
-                <div className="w-[20%]  flex  items-center ">
+                <div className="xl:w-[20%] lg:w-[20%] md:w-[20%]  sm:w-[50%] w-[50%]  flex  items-center ">
                     <label htmlFor="language" className="mr-2 text-sm font-medium text-gray-700">
                         Topics
                     </label>

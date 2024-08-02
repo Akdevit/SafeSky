@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const Hero = () => {
     return (
         <>
-            <div className='w-full h-[90vh] bg-[#F5F7FA] flex '
+            <div className='w-full h-[70vh] xl:h-[90vh] lg:h-[90vh] md:h-[90vh] sm:h-[90vh] bg-[#F5F7FA] flex '
                 style={{
                     backgroundImage: `url(https://img.freepik.com/premium-photo/map-world-with-words-pink-blue_1002361-4631.jpg?w=1380)`,
                     backgroundRepeat: 'no-repeat',

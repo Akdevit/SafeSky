@@ -35,7 +35,7 @@ const Weather = () => {
   console.log('weatherStatus', weatherStatus)
 
   return (
-    <>
+    <> 
       <Nav />
       {
         weatherStatus === 'succeeded' ? <>
@@ -46,7 +46,7 @@ const Weather = () => {
           :
           <>
             <div className='w-full h-[80vh]  flex justify-center items-center'>
-              <div className='w-[40%] h-[60%] flex flex-col items-center '>
+              <div className='xl:w-[40%] lg:w-[40%] md:w-[40%] sm:w-[40%]  w-[90%] h-auto flex flex-col items-center '>
 
                 <img src={WeatherImg} alt='weather' className='w-[300px] h-auto' />
                 <h1 className='text-2xl text-gray-300 font-bold'>Search your place</h1>
