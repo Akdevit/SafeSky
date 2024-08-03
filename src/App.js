@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
@@ -6,31 +6,28 @@ import Weather from "./pages/Weather";
 import Pollustion from "./pages/Pollustion";
 import Education from "./pages/Education";
 import { Toaster } from "react-hot-toast";
-
-// import Settings from './components/dashboard/Settings';
-// import Profile from './components/dashboard/Profile';
+import toast from "react-hot-toast";
 
 function App() {
-  // useEffect(() => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(
-  //       (position) => {
-  //         console.log(`Latitude: ${position.coords.latitude}`);
-  //         console.log(`Longitude: ${position.coords.longitude}`);
-  //       },
-  //       (error) => {
-  //         console.error(`Error: ${error.message}`);
-  //       },
-  //       {
-  //         enableHighAccuracy: true,
-  //         timeout: 5000,
-  //         maximumAge: 0,
-  //       }
-  //     );
-  //   } else {
-  //     console.log("Geolocation is not supported by this browser.");
-  //   }
-  // });
+  /* Check internet connection */
+  useEffect(() => {
+    const handleOffline = () => {
+      toast.error("You are offline");
+    };
+
+    const handleOnline = () => {
+      toast.success("You are online");
+    };
+
+    window.addEventListener("offline", handleOffline);
+    window.addEventListener("online", handleOnline);
+
+    // Cleanup function to remove event listeners
+    return () => {
+      window.removeEventListener("offline", handleOffline);
+      window.removeEventListener("online", handleOnline);
+    };
+  }, []);
 
   return (
     <>

@@ -45,7 +45,7 @@ const Contents = ({ topics, lang }) => {
 
     return (
         <>
-            <div className='w-full h-auto flex justify-center  p-4 '>
+            <div className='w-full h-auto xl:flex-row lg:flex-row md:flex-col-reverse sm:flex-col-reverse flex  flex-col-reverse gap-4 justify-center  p-4 '>
                 {
                     playvideo && (
                         <>
@@ -57,7 +57,7 @@ const Contents = ({ topics, lang }) => {
                                 allowFullScreen
                                 title="Video"
                             ></iframe>
-                            <RxCross1 className='text-2xl font-bold ml-4 text-red-700 cursor-pointer' onClick={() => setPlayvideo('')} title='close' />
+                            <RxCross1 className='text-2xl font-bold xl:ml-4 lg:ml-4 md:ml-4 sm:ml-4 text-red-700 cursor-pointer' onClick={() => setPlayvideo('')} title='close' />
                         </>
                     )
                 }

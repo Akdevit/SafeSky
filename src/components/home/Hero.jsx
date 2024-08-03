@@ -21,7 +21,9 @@ const Hero = () => {
                             <Link to='/dashboard/weather'>
                                 <button className='w-[150px] h-[40px] rounded-md dark:bg-gray-800 text-white  ' >Dashboard</button>
                             </Link>
-                            <button className='w-[150px] h-[40px] rounded-md dark:bg-gray-800 text-white  ' >Learn More</button>
+                            <Link to='/dashboard/education'>
+                                <button className='w-[150px] h-[40px] rounded-md dark:bg-gray-800 text-white  ' >Learn More</button>
+                            </Link>
                         </div>
                     </div>
 
