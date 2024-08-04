@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { CiSearch } from "react-icons/ci";
 import toast from 'react-hot-toast';
 import { IoMdSettings } from "react-icons/io";
@@ -28,13 +28,13 @@ const Nav = () => {
     const temp = kelvinToCelsius(weatherData?.main?.temp).toFixed(0);
     const cityName = weatherData?.name;
 
-    const notificationExists = (newNotification) => {
+    const notificationExists = useCallback((newNotification) => {
         return notifications.some(not =>
             not.message === newNotification.message &&
             not.type === newNotification.type &&
             new Date(not.date).toDateString() === new Date(newNotification.date).toDateString()
         );
-    };
+    }, [notifications]);
 
     useEffect(() => {
         const range = ProtectJsonData?.temperature_ranges?.find(teprenge =>
@@ -57,7 +57,7 @@ const Nav = () => {
         } else {
             console.log('No range found for temperature:', temp);
         }
-    }, [temp, dispatch, notifications, cityName]);
+    }, [temp, dispatch, notificationExists, cityName]);
 
     useEffect(() => {
         if (!pollustiondata?.list?.[0]) return;
@@ -83,7 +83,7 @@ const Nav = () => {
         } else {
             console.log('No range found for AQI:', AQI);
         }
-    }, [pollustiondata, dispatch, notifications, cityName]);
+    }, [pollustiondata, dispatch, notificationExists, cityName]);
 
     useEffect(() => {
         if (weatherStatus === 'loading') {

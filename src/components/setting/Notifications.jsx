@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setLocation } from '../../redux/Permissions/location';
 
 const Notifications = ({ setOpenpermistionmodal }) => {
-    const [notificationAccess, setNotificationAccess] = useState(false);
+    // const [notificationAccess, setNotificationAccess] = useState(false);
     const [locationAccess, setLocationAccess] = useState(false);
     // const [location, setLocationState] = useState({ lat: null, lng: null });
     const [error, setError] = useState(null);
