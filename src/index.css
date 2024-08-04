@@ -40,3 +40,7 @@ code {
 .sidebar.closed {
   transform: translateX(-100%);
 }
+
+.scrollbaarhide::-webkit-scrollbar {
+  display: none;
+}

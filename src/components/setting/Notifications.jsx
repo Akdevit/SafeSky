@@ -63,28 +63,7 @@ const Notifications = ({ setOpenpermistionmodal }) => {
         }
     };
 
-    // Handle notification permission request
-    const notificationHandler = () => {
-        if (!notificationAccess) {
-            Notification.requestPermission()
-                .then((permission) => {
-                    if (permission === 'granted') {
-                        setNotificationAccess(true);
-                        toast.success('Notification access granted.');
-                    } else {
-                        setNotificationAccess(false);
-                        toast.error('Notification access denied.');
-                    }
-                })
-                .catch(() => {
-                    setError('Failed to request notification permission.');
-                    toast.error('Failed to request notification permission.');
-                });
-        } else {
-            setNotificationAccess(false);
-        }
-    };
-
+   
 
 
     /* location storage clear */
@@ -100,7 +79,7 @@ const Notifications = ({ setOpenpermistionmodal }) => {
                     <RxCross1 className='text-xl font-bold cursor-pointer' onClick={() => setOpenpermistionmodal(false)} />
                 </div>
                 {/* Notification Access */}
-                <div className='flex items-center justify-between mb-6'>
+                {/* <div className='flex items-center justify-between mb-6'>
                     <span className='text-lg'>Notification Access</span>
                     <label className='inline-flex items-center cursor-pointer'>
                         <div
@@ -112,7 +91,7 @@ const Notifications = ({ setOpenpermistionmodal }) => {
                             ></div>
                         </div>
                     </label>
-                </div>
+                </div> */}
 
                 {/* Location Access */}
                 <div className='flex items-center justify-between'>

@@ -4,6 +4,7 @@ import WeatherForcastSlice from "./redux/WeatherForcastSlice";
 import pollustionSlice from "./redux/Pollustion";
 import inputSlice from "./redux/Searchvalue";
 import locationSlice from "./redux/Permissions/location";
+import notificationsSlice from "./redux/notificationsSlice";
 export const store = configureStore({
   reducer: {
     weather: WeatherApiSlice,
@@ -11,5 +12,6 @@ export const store = configureStore({
     pollustion: pollustionSlice,
     input: inputSlice,
     location: locationSlice,
+    notifications:notificationsSlice
   },
 });
