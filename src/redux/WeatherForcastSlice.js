@@ -7,7 +7,7 @@ export const fetchweatherforcastData = createAsyncThunk(
   "weather/fetchweatherforcastData",
   async (q) => {
     const response = await axios.get(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${q}&appid=2414caecc6c57d285a1f1b4e88cd0a78`
+      `https://api.openweathermap.org/data/2.5/forecast?q=${q}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
     );
     return response.data;
   }

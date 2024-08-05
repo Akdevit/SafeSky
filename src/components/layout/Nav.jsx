@@ -3,15 +3,15 @@ import { CiSearch } from "react-icons/ci";
 import toast from 'react-hot-toast';
 import { IoMdSettings } from "react-icons/io";
 import { VscBell } from "react-icons/vsc";
-import { CiUser } from "react-icons/ci";
 import { useDispatch, useSelector } from 'react-redux';
 import { setInputValue } from '../../redux/Searchvalue';
 import Notifications from '../setting/Notifications';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { RxCross1 } from 'react-icons/rx';
 import ProtectJsonData from "../../json/TempData.json";
 import AQIjsondata from "../../json/AQI.json";
 import { addNotification, clearNotifications } from '../../redux/notificationsSlice';
+import { SignedIn, UserButton, useUser } from "@clerk/clerk-react";
 
 const Nav = () => {
     const [openpermistionmodal, setOpenpermistionmodal] = useState(false);
@@ -19,6 +19,8 @@ const Nav = () => {
     const [input, setInput] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const { isSignedIn } = useUser();
+
     const weatherStatus = useSelector((state) => state.weather.status);
     const pollustiondata = useSelector((state) => state.pollustion.data);
     const weatherData = useSelector((state) => state.weather.data);
@@ -119,15 +121,18 @@ const Nav = () => {
     const OpenNotifications = () => {
         setOpenNotification(true);
     };
+    /* sing in dashboard  */
 
     return (
         <>
             <div className='w-full xl:h-20 h-auto gap-4 p-4 bg-[#FFFFFF] border border-[#E3E4E8] border-hide flex flex-col items-center justify-between pr-4 pl-4'>
                 <div className='w-full h-auto flex justify-between gap-4 '>
                     <div className='w-auto h-auto '>
-                        <h1 className='text-3xl font-bold'>SafeSky</h1>
+                        <NavLink to='/'>
+                            <h1 className='text-3xl font-bold'>SafeSky</h1>
+                        </NavLink>
                     </div>
-                    <div className="flex gap-4">
+                    <div className="flex gap-4 items-center">
                         <div className='hidden sm:flex sm:w-auto sm:pl-3 sm:pr-3 sm:p-2 sm:bg-[#F4F4F6] sm:h-auto sm:items-center sm:justify-center sm:gap-1 sm:rounded-full'>
                             <CiSearch className='text-2xl text-gray-400' />
                             <input
@@ -149,9 +154,24 @@ const Nav = () => {
                             <div className='w-[8px] h-[8px] bg-[#D13329] rounded-full absolute top-2 right-2'></div>
                             <VscBell className='text-xl text-[#D13329]' />
                         </div>
-                        <div className='w-[40px] h-[40px] bg-[#F4F4F6] flex justify-center items-center rounded-full cursor-pointer' title='Profile'>
-                            <CiUser className='text-[#888EA2] text-xl ' />
-                        </div>
+                        {
+                            isSignedIn ? (<>
+
+                                <div className='w-[40px] h-[40px] bg-[#F4F4F6] flex justify-center items-center rounded-full cursor-pointer' title='Profile'>
+
+                                    <SignedIn>
+                                        <UserButton />
+                                    </SignedIn>
+
+                                </div>
+                            </>) : (<>
+                              
+                                <NavLink to='/login'>
+                                    <button className='w-[80px] h-[30px] rounded-md bg-blue-950 text-white'>Sign-In</button>
+                                </NavLink>
+                            </>)
+                        }
+
                     </div>
                 </div>
                 {openpermistionmodal && <Notifications setOpenpermistionmodal={setOpenpermistionmodal} />}
@@ -165,6 +185,7 @@ const Nav = () => {
                         placeholder='Search for something..'
                     />
                 </div>
+
             </div>
             <div className={`w-[350px] h-auto fixed z-50 top-0 right-0 bottom-0 p-4 transition-transform duration-300 bg-white shadow-md ${openNotification ? 'translate-x-0' : 'translate-x-full'}`}>
                 <div className='w-full h-auto flex justify-between'>
@@ -174,13 +195,13 @@ const Nav = () => {
                 <div className='w-full flex justify-end mt-2'>
                     <button onClick={() => dispatch(clearNotifications())} className='border p-1 rounded-md hover:bg-red-400'>Clear All</button>
                 </div>
-                <NotificationList cityName={cityName} />
+                <NotificationList />
             </div>
         </>
     );
 };
 
-const NotificationList = ({ cityName }) => {
+const NotificationList = () => {
     const notifications = useSelector((state) => state.notifications);
 
     const groupNotificationsByDay = (notifications) => {
@@ -196,12 +217,17 @@ const NotificationList = ({ cityName }) => {
 
     const groupedNotifications = groupNotificationsByDay(notifications);
 
+    // Convert the grouped notifications to an array of entries and sort by date descending
+    const sortedGroupedNotifications = Object.entries(groupedNotifications).sort(
+        (a, b) => new Date(b[0]) - new Date(a[0])
+    );
+
     return (
         <div className='w-full h-[88vh] overflow-hidden overflow-y-scroll scrollbaarhide'>
-            {Object.keys(groupedNotifications).map((day) => (
+            {sortedGroupedNotifications.map(([day, notifications]) => (
                 <div key={day} className='mt-2'>
-                    <h3>{day}</h3>
-                    {groupedNotifications[day].map((notification) => (
+                    <p className='font-semibold '>{day}</p>
+                    {notifications.map((notification) => (
                         <div key={notification.id} className="border-b border-gray-200 py-2">
                             <p className="font-bold">{notification.title}</p>
                             <p>{notification.message}</p>

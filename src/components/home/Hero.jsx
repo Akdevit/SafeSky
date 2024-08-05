@@ -1,6 +1,24 @@
+import { useUser } from '@clerk/clerk-react';
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 const Hero = () => {
+    const { isSignedIn } = useUser();
+    const navigate = useNavigate();
+
+    const dashbordredirectbtn = () => {
+        if (isSignedIn) {
+            navigate('/dashboard/weather')
+        } else {
+            navigate('/login')
+        }
+    }
+    const eductaiondashboardredirect = () => {
+        if (isSignedIn) {
+            navigate('/dashboard/education')
+        } else {
+            navigate('/login')
+        }
+    }
     return (
         <>
             <div className='w-full h-[70vh] xl:h-[90vh] lg:h-[90vh] md:h-[90vh] sm:h-[90vh] bg-[#F5F7FA] flex '
@@ -18,12 +36,8 @@ const Hero = () => {
                         <p className='text-2xl text-center'>Access accurate data to protect your health and make informed decisions. Stay informed, stay healthy, and ensure your well-being.</p>
 
                         <div className='w-full h-auto flex gap-4 items-center justify-center'>
-                            <Link to='/dashboard/weather'>
-                                <button className='w-[150px] h-[40px] rounded-md dark:bg-gray-800 text-white  ' >Dashboard</button>
-                            </Link>
-                            <Link to='/dashboard/education'>
-                                <button className='w-[150px] h-[40px] rounded-md dark:bg-gray-800 text-white  ' >Learn More</button>
-                            </Link>
+                            <button onClick={dashbordredirectbtn} className='w-[150px] h-[40px] rounded-md dark:bg-gray-800 text-white  ' >Dashboard</button>
+                            <button onClick={eductaiondashboardredirect} className='w-[150px] h-[40px] rounded-md dark:bg-gray-800 text-white  ' >Learn More</button>
                         </div>
                     </div>
 

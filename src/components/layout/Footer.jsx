@@ -2,6 +2,7 @@ import React from 'react';
 import { setInputValue } from "../../redux/Searchvalue"
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '@clerk/clerk-react';
 const cities = [
   "Mumbai", "Delhi", "Bengaluru", "Kolkata", "Chennai", "Hyderabad",
   "Ahmedabad", "Pune", "Jaipur", "Surat", "Vadodara", "Indore",
@@ -30,12 +31,17 @@ const getRandomColor = () => {
 
 const Footer = () => {
   // const [valuecity, setValuecity] = useState('')
+  const { isSignedIn } = useUser();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const citiessearchweather = (city) => {
-    dispatch(setInputValue(city))
-    navigate('/dashboard/weather')
+    if (isSignedIn) {
+      dispatch(setInputValue(city))
+      navigate('/dashboard/weather')
+    } else {
+      navigate('/login')
+    }
   }
 
 

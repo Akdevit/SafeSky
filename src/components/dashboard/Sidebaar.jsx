@@ -31,11 +31,11 @@ const Sidebaar = () => {
                     <IoIosArrowBack className='text-xl font-bold' />
                 </div>
 
-                <NavLink to='/'>
+              
                     <div className='w-full h-auto'>
                         <h2 className='text-2xl font-bold mb-6'>Dashboard</h2>
                     </div>
-                </NavLink>
+                
                 <ul className='space-y-4'>
                     <li className='flex items-center'>
                         <FaCloudSun className='mr-2 text-xl' />

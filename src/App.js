@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Weather from "./pages/Weather";
 import Pollustion from "./pages/Pollustion";
 import Education from "./pages/Education";
+import Login from "./components/auth/Login";
 import { Toaster } from "react-hot-toast";
 import toast from "react-hot-toast";
 
@@ -29,8 +30,12 @@ function App() {
     };
   }, []);
 
+
+  
+
   return (
     <>
+    
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -39,6 +44,7 @@ function App() {
             <Route path="pollustion" element={<Pollustion />} />
             <Route path="education" element={<Education />} />
           </Route>
+          <Route path="/login" element={<Login/>}/>
         </Routes>
       </Router>
       <Toaster />
