@@ -1,23 +1,16 @@
-import { useUser } from '@clerk/clerk-react';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 const Hero = () => {
-    const { isSignedIn } = useUser();
     const navigate = useNavigate();
 
     const dashbordredirectbtn = () => {
-        if (isSignedIn) {
-            navigate('/dashboard/weather')
-        } else {
-            navigate('/login')
-        }
+        navigate('/dashboard/weather')
+
     }
     const eductaiondashboardredirect = () => {
-        if (isSignedIn) {
-            navigate('/dashboard/education')
-        } else {
-            navigate('/login')
-        }
+
+        navigate('/dashboard/education')
+
     }
     return (
         <>

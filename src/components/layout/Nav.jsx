@@ -11,7 +11,6 @@ import { RxCross1 } from 'react-icons/rx';
 import ProtectJsonData from "../../json/TempData.json";
 import AQIjsondata from "../../json/AQI.json";
 import { addNotification, clearNotifications } from '../../redux/notificationsSlice';
-import { SignedIn, UserButton, useUser } from "@clerk/clerk-react";
 
 const Nav = () => {
     const [openpermistionmodal, setOpenpermistionmodal] = useState(false);
@@ -19,7 +18,6 @@ const Nav = () => {
     const [input, setInput] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { isSignedIn } = useUser();
 
     const weatherStatus = useSelector((state) => state.weather.status);
     const pollustiondata = useSelector((state) => state.pollustion.data);
@@ -154,24 +152,7 @@ const Nav = () => {
                             <div className='w-[8px] h-[8px] bg-[#D13329] rounded-full absolute top-2 right-2'></div>
                             <VscBell className='text-xl text-[#D13329]' />
                         </div>
-                        {
-                            isSignedIn ? (<>
-
-                                <div className='w-[40px] h-[40px] bg-[#F4F4F6] flex justify-center items-center rounded-full cursor-pointer' title='Profile'>
-
-                                    <SignedIn>
-                                        <UserButton />
-                                    </SignedIn>
-
-                                </div>
-                            </>) : (<>
-                              
-                                <NavLink to='/login'>
-                                    <button className='w-[80px] h-[30px] rounded-md bg-blue-950 text-white'>Sign-In</button>
-                                </NavLink>
-                            </>)
-                        }
-
+                       
                     </div>
                 </div>
                 {openpermistionmodal && <Notifications setOpenpermistionmodal={setOpenpermistionmodal} />}

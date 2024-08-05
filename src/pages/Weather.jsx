@@ -7,8 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchweatherData } from '../redux/WeatherApiSlice';
 import { fetchweatherforcastData } from '../redux/WeatherForcastSlice';
 import WeatherImg from "../images/weather.avif";
-import { useUser } from '@clerk/clerk-react';
-import { Navigate } from 'react-router-dom';
+
 const Weather = () => {
   const dispatch = useDispatch();
   const weatherData = useSelector((state) => state.weather.data);
@@ -34,11 +33,7 @@ const Weather = () => {
   }, [dispatch, WeatherCityname]);
 
 
-  const { isSignedIn } = useUser();
 
-  if (!isSignedIn) {
-    return <Navigate to="/login" />;
-  }
   return (
     <>
       <Nav />
